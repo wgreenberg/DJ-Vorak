@@ -1,0 +1,50 @@
+<html>
+<script src='./js/muzak.js'></script>
+<script>
+function setup() {
+    var ac = window.AudioContext || window.webkitAudioContext;
+    var context = new ac();
+    loadAudio(context, {
+        'a': './audio/a.mp3',
+        'b': './audio/b.mp3',
+        'c': './audio/c.mp3',
+        'd': './audio/d.mp3',
+        'e': './audio/e.mp3',
+        'f': './audio/f.mp3',
+        'g': './audio/g.mp3',
+        'h': './audio/h.mp3',
+        'i': './audio/i.mp3',
+        'j': './audio/j.mp3',
+        'k': './audio/k.mp3',
+        'l': './audio/l.mp3',
+        'm': './audio/m.mp3',
+        'n': './audio/n.mp3',
+        'o': './audio/o.mp3',
+        'p': './audio/p.mp3',
+        'q': './audio/q.mp3',
+        'r': './audio/r.mp3',
+        's': './audio/s.mp3',
+        't': './audio/t.mp3',
+        'u': './audio/u.mp3',
+        'v': './audio/v.mp3',
+        'w': './audio/w.mp3',
+        'x': './audio/x.mp3',
+        'y': './audio/y.mp3',
+        'z': './audio/z.mp3',
+    }, function (err, samples) {
+        if (err) {
+            console.log('Err:', err);
+            return;
+        }
+        var seq = new Sequencer(context, samples);
+        var textarea = document.getElementById('sequencer');
+        textarea.addEventListener('input', function () {
+            seq.setSequence(textarea.value);
+        });
+        seq.start();
+    });
+}
+setup();
+</script>
+<textarea id='sequencer'></textarea>
+</html>
